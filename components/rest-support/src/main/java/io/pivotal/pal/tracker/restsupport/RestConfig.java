@@ -2,6 +2,7 @@ package io.pivotal.pal.tracker.restsupport;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestOperations;
@@ -16,6 +17,7 @@ public class RestConfig {
         return new RestTemplate();
     }
 
+    @LoadBalanced
     @Bean
     public ObjectMapper objectMapper() {
         ObjectMapper mapper = new ObjectMapper();
